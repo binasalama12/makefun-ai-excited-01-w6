@@ -23,8 +23,24 @@ const sourceHash = sha256Hex(sourceBytes);
 const outputHash = sha256Hex(outputBytes);
 const identical = sourceHash === outputHash;
 
-console.log(`output: ${outputPath}`);
+// Extra verification: sizes on disk must agree with the in-memory copies,
+// and the output must be exactly as large as the source it mirrors.
+const sourceStat = statSync(sourcePath);
+const outputStat = statSync(outputPath);
+const sizesMatch =
+  sourceStat.size === sourceBytes.length &&
+  outputStat.size === outputBytes.length &&
+  sourceStat.size === outputStat.size;
+
+console.log(`source: ${sourcePath} (${sourceStat.size} bytes on disk)`);
+console.log(`output: ${outputPath} (${outputStat.size} bytes on disk)`);
 console.log(`bytes: ${outputBytes.length}`);
 console.log(`sha256 output: ${outputHash}`);
 console.log(`sha256 source: ${sourceHash}`);
-console.log(`match: ${identical}`);
+console.log(`hash match: ${identical}`);
+console.log(`size match: ${sizesMatch}`);
+console.log(`match: ${identical && sizesMatch}`);
+if (!identical || !sizesMatch) {
+  console.error("verification failed: output does not mirror entry.png");
+  process.exitCode = 1;
+}

@@ -6,6 +6,8 @@
 
 For months her father was just a voice on a crackly phone call and a date circled in crayon on the kitchen calendar, and then suddenly he was standing in the arrivals hall with his bag still on his shoulder. She did not walk to him — she flew, launching herself into the air with her legs kicked back behind her, and the hand-painted "welcome home" sign she had carried all morning slipped from her hands and clattered to the floor, completely forgotten. They are both laughing and crying at the same time in mid-catch, while the strangers around them slow down, smile, and start to clap for a reunion they only caught the last second of.
 
+You can hear it if you look long enough — the squeak of her shoes leaving the floor, his laugh breaking halfway into a sob, and that dropped sign still rocking gently on the tiles behind them.
+
 The photo is softly graded and stored as entry.png, and main.ts copies it to the output path while recording the sha256 of both files deterministically so the delivered image can always be verified byte for byte.
 
 ## Why it excites
